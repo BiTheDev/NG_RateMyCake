@@ -5,7 +5,8 @@ goose.connect("mongodb://localhost:27017/CakeApi", {useNewUrlParser: true},(errs
 
 const CommentSchema = new goose.Schema({
     rating:{
-        type :Number
+        type :Number,
+        require:true
     },
     content:{
         type:String,
@@ -13,12 +14,12 @@ const CommentSchema = new goose.Schema({
     }
 },{timestamps : true});
 const CakeSchema = new goose.Schema({
-    Name:{
+    name:{
         type:String,
         required:true,
         minlength:[2,"Baker name should be longer"]
     },
-    Image:{
+    image:{
         type:String,
         required:true,
     },

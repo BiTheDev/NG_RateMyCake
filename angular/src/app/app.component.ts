@@ -5,14 +5,19 @@ import { HttpService } from './http.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'Rate my Cake ';
+export class AppComponent implements OnInit {
+  title = 'Rate my Cake';
   Cakes = {};
   oneCake = {};
+  click = false;
+  newCake = {name : "", image : ""};
+  comment = {rating: "", content: ""};
   constructor(private _httpService: HttpService){
   }
   ngOnInit(){
     this.AllCake();
+    this.newCake;
+    this.click;
   }
   AllCake(){
     let cake = this._httpService.getAllCakes();
@@ -26,13 +31,26 @@ export class AppComponent {
   let one = this._httpService.GetOne(id);
   one.subscribe(data =>{
     console.log("Got one Cake",data);
+    this.click = true;
     this.oneCake = data;
   })
   }
   CreateCake(){
-
+    let cake = this._httpService.NewCake(this.newCake);
+    cake.subscribe(data =>{
+      console.log("create cake success",data);
+      console.log("");
+      this.newCake = {name : "", image : ""};
+      this.AllCake();
+    })
   }
-  CreateCmt(){
-
+  CreateCmt(id){
+    let comment = this._httpService.newComment(id,this.comment);
+    comment.subscribe(data =>{
+      console.log("create comment success");
+      console.log("");
+      this.comment = {rating: "", content: ""}
+      this.AllCake();
+    })
   }
 }

@@ -1,8 +1,44 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<div>
   <h1>
-    {{ title }}
+  {{ title }}
   </h1>
+  <div id="showCake">
+      <ul *ngFor="let cake of Cakes">
+        <li><img src="{{ cake.image }}" alt="cake images">
+              <div id="createCmt">
+                <form (submit)="CreateCmt(cake._id)">
+                  {{comment | json}}
+                  <p>Rating: </p>
+                  <select name="comment.rating" [(ngModel)]="comment.rating" >
+                    <option [value] = "1">1 <span>Stars</span></option>
+                    <option [value] = "2">2 <span>Stars</span></option>
+                    <option [value] = "3">3 <span>Stars</span></option>
+                    <option [value] = "4">4 <span>Stars</span></option>
+                    <option [value] = "5">5 <span>Stars</span></option>
+                  </select>
+                  <p>Comment:</p>
+                  <textarea name="comment.content" [(ngModel)]="comment.content"></textarea>
+                  <button type="submit">Create Comment</button>
+                </form>
+                <button (click)="OneCake(cake._id)">Show Cake</button>
+              </div>
+        </li>
+      </ul>
+      <app-detail *ngIf="click" [showCake]=oneCake></app-detail>
+  </div>
+
+  <div id="createCake">
+    <form (submit)="CreateCake()">
+      <p>{{ newCake | json }}</p>
+       <p>Baker Name : <input type="text" name="newCake.name" [(ngModel)]="newCake.name"/></p> 
+       <p>Cake URL : <input type="text" name="newCake.image" [(ngModel)]="newCake.image"/></p>
+       <button type="submit">Create Cake</button>
+    </form>
+  </div>
+
+  <!-- <div id="createCmt"></div> -->
 </div>
+
 
 
