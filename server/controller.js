@@ -16,10 +16,10 @@ module.exports = {
                         .then(data => console.log("show Cake success")||res.json(data))
                         .catch(errs => console.log("show Cake error")||res.json(errs)),
     createCmt :(req,res) =>{
-                        var newCmt = new Comments()
-                        newCmt.rating = req.body.rating
-                        newCmt.content = req.body.content
-                        newCmt.save()
+                        // var newCmt = new Comments()
+                        // newCmt.rating = req.body.rating
+                        // newCmt.content = req.body.content
+                        Comments.create(req.body)
                         .then(data => {
                             Cakes.update({_id :req.params.id},{$push : {Comment : data}})
                                 .then(data => console.log("create comment and add to cake success")||res.json(data))

@@ -6,34 +6,36 @@ import { Component, OnInit,Input } from '@angular/core';
 })
 export class DetailComponent implements OnInit {
   @Input() showCake : any;
-  totalRate = 0;
-  length = 0;
-  average = 0;
+  average : number;
   constructor() { }
 
-  ngOnInit() {
+  // ngOnInit() {
+  //   this.AverageStar();
+
+  // }
+  ngOnChanges(){
     this.AverageStar();
   }
   AverageStar(){
     console.log("Rating");
+    let length = this.showCake[0].Comment.length
+    let totalRate = 0;
     console.log(this.showCake[0].Comment);
     
-    this.length = this.showCake[0].Comment.length;
 
-    console.log(this.length);
+    console.log(length);
 
-    for(let i = 0; i<this.length; i++){
+    for(let i = 0; i<length; i++){
       console.log(this.showCake[0].Comment[i].rating);
-      
-      this.totalRate += this.showCake[0].Comment[i].rating;
+      totalRate += this.showCake[0].Comment[i].rating;
     }
     
-    console.log(this.totalRate);
+    console.log(totalRate);
 
-    this.average = this.totalRate /this.length;
+    this.average = (totalRate /length);
 
     console.log(this.average);
-    
+
   }
 
 }

@@ -47,7 +47,7 @@ export class AppComponent implements OnInit {
   CreateCmt(id){
     let comment = this._httpService.newComment(id,this.comment);
     comment.subscribe(data =>{
-      console.log("create comment success");
+      console.log("create comment success",data);
       console.log("");
       this.comment = {rating: "", content: ""}
       this.AllCake();
