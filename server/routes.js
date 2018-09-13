@@ -5,7 +5,7 @@ function router(app)
     app.get("/Cakes/", allCake);
     app.post("Cakes/new/", createCake);
     app.get("/Cakes/show/:id/",showCake);
-    app.post("/Cakes/comment/new/",createCmt)
+    app.post("/Cakes/comment/new/:id",createCmt)
 }
 
 module.exports = router;

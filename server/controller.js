@@ -1,4 +1,4 @@
-const {Cakes,Comments}= require("./models.js");
+const {Cakes,Comments}= require("./model.js");
 module.exports = {
     allCake : (req,res) => Cakes.find({})
                         .then(data => console.log("root success")||res.json(data))

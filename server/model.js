@@ -26,6 +26,6 @@ const CakeSchema = new goose.Schema({
 },{timestamps : true})
 
 const Cakes = goose.model('Cake', CakeSchema);
-const Comments = goose.model('Cake', CommentSchema);
+const Comments = goose.model('Comments', CommentSchema);
 
 module.exports = {Cakes,Comments};
