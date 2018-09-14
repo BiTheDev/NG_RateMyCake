@@ -10,6 +10,8 @@ export class AppComponent implements OnInit {
   Cakes = {};
   oneCake = {};
   click = false;
+  cmtbtn = false;
+  target = 0;
   newCake = {name : "", image : ""};
   comment = {rating: "", content: ""};
   constructor(private _httpService: HttpService){
@@ -26,6 +28,10 @@ export class AppComponent implements OnInit {
       this.Cakes = data;
       console.log("Cakes :" + this.Cakes);    
     })
+  }
+  commentbox(id){
+    this.cmtbtn = true;
+    this.target = id;
   }
   OneCake(id){
   let one = this._httpService.GetOne(id);

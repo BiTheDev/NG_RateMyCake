@@ -3,37 +3,38 @@
   <h1>
   {{ title }}
   </h1>
+  <div id="createCake">
+      <h2>Create a new Cake</h2>
+      <form (submit)="CreateCake()">
+        <p>{{ newCake | json }}</p>
+         <p>Baker Name : <input type="text" name="newCake.name" [(ngModel)]="newCake.name"/></p> 
+         <p>Cake URL : <input type="text" name="newCake.image" [(ngModel)]="newCake.image"/></p>
+         <button type="submit">Create Cake</button>
+      </form>
+    </div>
   <div id="showCake">
       <ul *ngFor="let cake of Cakes">
-        <li><img src="{{ cake.image }}" alt="cake images" (click)="OneCake(cake._id)">
-              <div id="createCmt">
-                <form (submit)="CreateCmt(cake._id)">
-                  {{comment | json}}
-                  <p>Rating: </p>
-                  <select name="comment.rating" [(ngModel)]="comment.rating" >
-                    <option value = "1" >1 <span>Stars</span></option>
-                    <option value = "2">2 <span>Stars</span></option>
-                    <option value = "3">3 <span>Stars</span></option>
-                    <option value = "4">4 <span>Stars</span></option>
-                    <option value = "5">5 <span>Stars</span></option>
-                  </select>
-                  <p>Comment:</p>
-                  <textarea name="comment.content" [(ngModel)]="comment.content"></textarea>
-                  <button type="submit">Create Comment</button>
-                </form>
-              </div>
+        <li><img src="{{ cake.image }}" alt="cake images" (click)="commentbox(cake._id)"><button (click)="OneCake(cake._id)">show Comment</button>
         </li>
       </ul>
   </div>
-  <app-detail *ngIf="click" [showCake]=oneCake></app-detail>
-  <div id="createCake">
-    <form (submit)="CreateCake()">
-      <p>{{ newCake | json }}</p>
-       <p>Baker Name : <input type="text" name="newCake.name" [(ngModel)]="newCake.name"/></p> 
-       <p>Cake URL : <input type="text" name="newCake.image" [(ngModel)]="newCake.image"/></p>
-       <button type="submit">Create Cake</button>
-    </form>
+  <div *ngIf="cmtbtn" id="cmt">
+    <p>Comment:</p>
+    <form (submit)="CreateCmt(target)">
+        {{comment | json}}
+        <p>Rating: </p>
+        <select name="comment.rating" [(ngModel)]="comment.rating" >
+          <option value = "1" >1 <span>Stars</span></option>
+          <option value = "2">2 <span>Stars</span></option>
+          <option value = "3">3 <span>Stars</span></option>
+          <option value = "4">4 <span>Stars</span></option>
+          <option value = "5">5 <span>Stars</span></option>
+        </select>
+        <textarea name="comment.content" [(ngModel)]="comment.content"></textarea>
+        <button type="submit">Create Comment</button>
+      </form>
   </div>
+  <app-detail *ngIf="click" [showCake]=oneCake></app-detail>
 
   <!-- <div id="createCmt"></div> -->
 </div>
