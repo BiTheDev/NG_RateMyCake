@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpService } from './http.service';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule  } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 import { DetailComponent } from './detail/detail.component';
 @NgModule({
   declarations: [
@@ -13,7 +13,8 @@ import { DetailComponent } from './detail/detail.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]

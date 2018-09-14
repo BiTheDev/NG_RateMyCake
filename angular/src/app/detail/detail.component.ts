@@ -9,10 +9,10 @@ export class DetailComponent implements OnInit {
   average : number;
   constructor() { }
 
-  // ngOnInit() {
-  //   this.AverageStar();
+  ngOnInit() {
+    this.AverageStar();
 
-  // }
+  }
   ngOnChanges(){
     this.AverageStar();
   }
