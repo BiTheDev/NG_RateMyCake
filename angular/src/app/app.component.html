@@ -29,8 +29,8 @@
   <div id="createCake">
     <form (submit)="CreateCake()">
       <p>{{ newCake | json }}</p>
-       <p>Baker Name : <input type="text" name="newCake.name" [(ngModel)]="newCake.name"/></p> 
-       <p>Cake URL : <input type="text" name="newCake.image" [(ngModel)]="newCake.image"/></p>
+       <p>Baker Name : <input type="text" formControlName="rating"/></p> 
+       <p>Cake URL : <input type="text" formControlName="content"/></p>
        <button type="submit">Create Cake</button>
     </form>
   </div>

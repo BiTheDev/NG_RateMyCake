@@ -1,5 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { HttpService } from './http.service';
+import { FormGroup,FormControl } from '@angular/forms';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,7 +12,10 @@ export class AppComponent implements OnInit {
   oneCake = {};
   click = false;
   newCake = {name : "", image : ""};
-  comment = {rating: "", content: ""};
+  comment = new FormGroup({
+      rating : new FormControl(''),
+      content : new FormControl('')
+  });
   constructor(private _httpService: HttpService){
   }
   ngOnInit(){
@@ -49,7 +53,10 @@ export class AppComponent implements OnInit {
     comment.subscribe(data =>{
       console.log("create comment success",data);
       console.log("");
-      this.comment = {rating: "", content: ""}
+      this.comment = new FormGroup({
+        rating : new FormControl(''),
+        content : new FormControl('')
+    });
       this.AllCake();
     })
   }
