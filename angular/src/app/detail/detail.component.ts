@@ -4,7 +4,7 @@ import { Component, OnInit,Input } from '@angular/core';
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.css']
 })
-export class DetailComponent implements OnInit {
+export class DetailComponent {
   @Input() showCake : any;
   average : number;
   constructor() { }

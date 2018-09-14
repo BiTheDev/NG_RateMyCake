@@ -8,16 +8,16 @@ import { HttpService } from './http.service';
 export class AppComponent implements OnInit {
   title = 'Rate my Cake';
   Cakes = {};
-  oneCake = {};
-  click = false;
+  // oneCake = {};
+  // click = false;
   newCake = {name : "", image : ""};
-  comment = {rating: "", content: ""};
+  // comment = {rating: "", content: ""};
   constructor(private _httpService: HttpService){
   }
   ngOnInit(){
     this.AllCake();
     this.newCake;
-    this.click;
+    // this.click;
   }
   AllCake(){
     let cake = this._httpService.getAllCakes();
@@ -27,14 +27,14 @@ export class AppComponent implements OnInit {
       console.log("Cakes :" + this.Cakes);    
     })
   }
-  OneCake(id){
-  let one = this._httpService.GetOne(id);
-  one.subscribe(data =>{
-    console.log("Got one Cake",data);
-    this.click = true;
-    this.oneCake = data;
-  })
-  }
+  // OneCake(id){
+  // let one = this._httpService.GetOne(id);
+  // one.subscribe(data =>{
+  //   console.log("Got one Cake",data);
+  //   this.click = true;
+  //   this.oneCake = data;
+  // })
+  // }
   CreateCake(){
     let cake = this._httpService.NewCake(this.newCake);
     cake.subscribe(data =>{
@@ -44,13 +44,13 @@ export class AppComponent implements OnInit {
       this.AllCake();
     })
   }
-  CreateCmt(id){
-    let comment = this._httpService.newComment(id,this.comment);
-    comment.subscribe(data =>{
-      console.log("create comment success",data);
-      console.log("");
-      this.comment = {rating: "", content: ""}
-      this.AllCake();
-    })
-  }
+  // CreateCmt(id){
+  //   let comment = this._httpService.newComment(id,this.comment);
+  //   comment.subscribe(data =>{
+  //     console.log("create comment success",data);
+  //     console.log("");
+  //     this.comment = {rating: "", content: ""}
+  //     this.AllCake();
+  //   })
+  // }
 }

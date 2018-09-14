@@ -5,7 +5,8 @@
   </h1>
   <div id="showCake">
       <ul *ngFor="let cake of Cakes">
-        <li><img src="{{ cake.image }}" alt="cake images" (click)="OneCake(cake._id)">
+        <li><app-cake *ngIf="cake" [cake]=cake></app-cake></li>
+        <!-- <li><img src="{{ cake.image }}" alt="cake images" (click)="OneCake(cake._id)">
               <div id="createCmt">
                 <form (submit)="CreateCmt(cake._id)">
                   {{comment | json}}
@@ -22,10 +23,9 @@
                   <button type="submit">Create Comment</button>
                 </form>
               </div>
-        </li>
+        </li> -->
       </ul>
   </div>
-  <app-detail *ngIf="click" [showCake]=oneCake></app-detail>
   <div id="createCake">
     <form (submit)="CreateCake()">
       <p>{{ newCake | json }}</p>

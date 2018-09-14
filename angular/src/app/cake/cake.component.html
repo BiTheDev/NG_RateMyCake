@@ -1,0 +1,18 @@
+
+  <img src="{{cake.image}}" alt="" (click)="OneCake(cake._id)">
+  <form (submit)="CreateCmt(cake._id)">
+      {{comment | json}}
+      <p>Rating: </p>
+      <select name="comment.rating" [(ngModel)]="comment.rating" >
+        <option value = "1" >1 <span>Stars</span></option>
+        <option value = "2">2 <span>Stars</span></option>
+        <option value = "3">3 <span>Stars</span></option>
+        <option value = "4">4 <span>Stars</span></option>
+        <option value = "5">5 <span>Stars</span></option>
+      </select>
+      <p>Comment:</p>
+      <textarea name="comment.content" [(ngModel)]="comment.content"></textarea>
+      <button type="submit">Create Comment</button>
+    </form>
+    <app-detail *ngIf="click" [showCake]=oneCake></app-detail>
+

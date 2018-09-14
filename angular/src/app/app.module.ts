@@ -5,10 +5,12 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { DetailComponent } from './detail/detail.component';
+import { CakeComponent } from './cake/cake.component';
 @NgModule({
   declarations: [
     AppComponent,
-    DetailComponent
+    DetailComponent,
+    CakeComponent
   ],
   imports: [
     BrowserModule,
