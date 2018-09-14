@@ -13,6 +13,7 @@
       </form>
     </div>
   <div id="showCake">
+    <p>Click image to leave a message</p>
       <ul *ngFor="let cake of Cakes">
         <li><img src="{{ cake.image }}" alt="cake images" (click)="commentbox(cake._id)"><button (click)="OneCake(cake._id)">show Comment</button>
         </li>

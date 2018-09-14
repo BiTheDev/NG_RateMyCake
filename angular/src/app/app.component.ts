@@ -57,6 +57,7 @@ export class AppComponent implements OnInit {
       console.log("");
       this.comment = {rating: "", content: ""}
       this.AllCake();
+      this.cmtbtn = false;
     })
   }
 }
